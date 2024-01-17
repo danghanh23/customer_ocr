@@ -3,7 +3,9 @@
 <div id="wrapper">
   <div class="container">
     <div class="row justify-content-around">
-      <form action="" class="col-md-10 bg-light p-3 my-3">
+      <form action="{% url 'add_customer_url' %}" class="col-md-10 bg-light p-3 my-3">
+        {% csrf_token %}
+        {{form.as_p}}
         <div class="form-group row">
           <div class="col-sm-3 d-flex ml-auto">
             <label for="name" class="nowrap mt-2 mr-1">申込日</label>
@@ -118,19 +120,26 @@
         </div>
 
         <input  id="myButton" type="submit" value="保存" class="btn-primary btn btn-block" />
+      
       </form>
     </div>
   </div>
 </div>
 
 <script>
-  document.getElementById('myButton').onclick = function() {
+  document.getElementById('myButton').addEventListener('submit', function(event) {
+      event.preventDefault(); // Ngăn chặn chuyển hướng mặc định của form
+  
+      pprint("3421362156416541541235721543213751354566")
+      // Thu thập dữ liệu từ form
+      var formData = new FormData(this);
+      pprint(formData)
+  
       // Gửi yêu cầu AJAX đến một URL Django
-      // Đây chỉ là một ví dụ đơn giản, bạn có thể thực hiện các hành động khác ở đây.
-      fetch('/my_django_url/', {
-          method: 'GET',
+      fetch('/add_customer_url/', {
+          method: 'POST',
+          body: formData,
           headers: {
-              'Content-Type': 'application/json',
               'X-Requested-With': 'XMLHttpRequest',
           },
       })
@@ -140,6 +149,6 @@
           console.log(data);
       })
       .catch(error => console.error('Error:', error));
-  };
+  });
   </script>
 {% endblock %}

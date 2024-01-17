@@ -39,12 +39,19 @@ def gotoRegister(request):
     
     
 def addCustomer(request):
-    form = CustomerForm()
-    if request.method == 'POST':
-        form = CustomerForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/')
-    return render(request, 'pages/add_customer.html', {'form': form})
+    print("xxxxxxxxxxxxxxxxx2")
+    # form = CustomerForm()
+    # if request.method == 'POST':
+    #     form = CustomerForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return HttpResponseRedirect('/')
+    return render(request, 'pages/add_customer.html')
+
+def addCustomerxx(request):
+    print("xxxxxxxxxxxxxxxxx111111")
+    print(request.GET.get('champion_code'))
+    return HttpResponseRedirect('/')
+   
     
     
