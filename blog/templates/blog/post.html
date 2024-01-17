@@ -5,6 +5,7 @@
 {% block content %}
 
 <h3> {{post.title}}</h3>
+<img src="{{post.image.url}}" width="500px" height="300px"
 <h6> on {{post.date}} </h6>
 {{post.body|safe|linebreaks}}
 {% endblock %}
