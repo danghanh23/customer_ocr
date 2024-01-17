@@ -1,0 +1,145 @@
+{% extends "pages/base.html" %} {% block title %}Add Customer {% endblock %} 
+{% block content %}
+<div id="wrapper">
+  <div class="container">
+    <div class="row justify-content-around">
+      <form action="" class="col-md-10 bg-light p-3 my-3">
+        <div class="form-group row">
+          <div class="col-sm-3 d-flex ml-auto">
+            <label for="name" class="nowrap mt-2 mr-1">申込日</label>
+            <input type="date" class="" />
+          </div>
+        </div>
+
+        <h1 class="text-center text-uppercase h2 my-5">契約申込書</h1>
+
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <label for="plan">料金プラン</label>
+            <input
+              type="text"
+              name="plan"
+              id="plan"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="col-sm-8 ml-auto">
+            <label for="champion_code">キャンペーン コード</label>
+            <input
+              type="text"
+              name="champion_code"
+              id="champion_code"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="option">オプション</label>
+          <input type="text" name="option" id="option" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="furigana">フリガナ</label>
+          <input
+            type="text"
+            name="furigana"
+            id="furigana"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="name">氏名</label>
+          <input type="text" name="name" id="name" class="form-control" />
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <label for="gender">性別</label><br />
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                name="gender"
+                id="male"
+                value="male"
+                class="form-check-input"
+                checked
+              />
+              <label for="male">男</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                name="gender"
+                id="female"
+                value="female"
+                class="form-check-input"
+              />
+              <label for="female">女</label>
+            </div>
+          </div>
+
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label for="name" class="nowrap mt-2 mr-1">生年月日</label>
+              <input type="date" class="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" name="address" id="address" class="form-control" />
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <label for="number">電話番号</label>
+            <input
+              type="phone_number"
+              name="phone_number"
+              id="phone_number"
+              class="form-control"
+            />
+          </div>
+
+          <div class="col-sm-6">
+            <label for="email">メールアドレス</label>
+            <input type="email" name="email" id="email" class="form-control" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="note">備考</label>
+          <input type="text" name="note" id="note" class="form-control" />
+        </div>
+
+        <input  id="myButton" type="submit" value="保存" class="btn-primary btn btn-block" />
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('myButton').onclick = function() {
+      // Gửi yêu cầu AJAX đến một URL Django
+      // Đây chỉ là một ví dụ đơn giản, bạn có thể thực hiện các hành động khác ở đây.
+      fetch('/my_django_url/', {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest',
+          },
+      })
+      .then(response => response.json())
+      .then(data => {
+          // Xử lý kết quả từ Django (nếu cần)
+          console.log(data);
+      })
+      .catch(error => console.error('Error:', error));
+  };
+  </script>
+{% endblock %}

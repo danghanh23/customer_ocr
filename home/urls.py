@@ -14,5 +14,8 @@ urlpatterns = [
     path('gotoRegister/',views.gotoRegister,name='gotoRegister'),
     
     
+    path('customer/',views.addCustomer,name='addCustomer'),
+    
+    
 ]
 

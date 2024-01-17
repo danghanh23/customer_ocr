@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .forms import RegistrationForm
-from django.contrib.auth import logout, login
 
+from home.models import Customer
+from .forms import CustomerForm, RegistrationForm
+from django.contrib.auth import logout, login
 # Create your views here.
 def index(request):
-    return render(request, 'pages/home.html')
+    data = {'Customers' :Customer.objects.all().order_by("-register_date") }
+    context = {'data': data}
+    return render(request, 'pages/home.html', data)
 
 def contact(request):
     return render(request, 'pages/contact.html')
@@ -33,3 +36,15 @@ def loginCustom(request):
 def gotoRegister(request):
     HttpResponseRedirect('/')
     register(request)
+    
+    
+def addCustomer(request):
+    form = CustomerForm()
+    if request.method == 'POST':
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+    return render(request, 'pages/add_customer.html', {'form': form})
+    
+    
