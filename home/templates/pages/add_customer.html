@@ -1,5 +1,6 @@
 {% extends "pages/base.html" %} {% block title %}Add Customer {% endblock %} 
 {% block content %}
+<script src="./Country_State_District_City_Data.js"></script>
 <div id="wrapper">
   <div class="container">
     <div class="row justify-content-around">
@@ -18,10 +19,7 @@
             <input type="date" class="" name="register_date" id="register_date" />
           </div>
         </div>
-
-
         
-
         <div class="form-group row">
           <div class="col-sm-6">
             <label for="plan">申込プラン</label>
@@ -33,27 +31,45 @@
             class="form-control"
             required>
               <option selected>Select plan</option>
-              <option value="Plan A">Plan A</option>
-              <option value="Plan B">Plan B</option>
-              <option value="Plan C">Plan C</option>
+              <option value="プラン A">プラン A</option>
+              <option value="プラン B">プラン B</option>
+              <option value="プラン C">プラン C</option>
             </select>
           </div>
 
           <div class="col-sm-6 ml-auto">
             <label for="campaign">申込キャンペーン</label>
-            <input
-              type="text"
-              name="campaign"
-              id="campaign"
-              class="form-control"
-            />
+            <select 
+            class="form-select" 
+            aria-label="Default select example" 
+            name="campaign"
+            id="campaign"
+            class="form-control"
+            required>
+              <option selected>Select Campaign</option>
+              <option value="キャンペーン A">キャンペーン A</option>
+              <option value="キャンペーン B">キャンペーン B</option>
+              <option value="キャンペーン C">キャンペーン C</option>
+            </select>
           </div>
         </div>
 
         <div class="form-group row">
           <div class="col-sm-6">
             <label for="option">申込オプション</label>
-            <input type="text" name="option" id="option" class="form-control" />
+            {% comment %} <input type="text" name="option" id="option" class="form-control" /> {% endcomment %}
+            <select 
+            class="form-select" 
+            aria-label="Default select example" 
+            name="option"
+            id="option"
+            class="form-control"
+            required>
+              <option selected>Select option</option>
+              <option value="オプション A">オプション A</option>
+              <option value="オプション B">オプション B</option>
+              <option value="オプション C">オプション C</option>
+            </select>
           </div>
         </div>
 
@@ -63,7 +79,7 @@
           </div>
 
           <div class="col-sm-6 ml-auto">
-            <label for="first_name_kata">氏名_カナ</label>
+            <label for="first_name_kata">氏名-カナ</label>
           </div>
         </div>
 
@@ -147,17 +163,28 @@
           </div>
         </div>
 
+
+          
+  
+     
+
         <label for="country">住所</label>
         <div class="form-group row">
           <div class="col-sm-6">
             <label for="country">Country</label>
-            <input
+          <input
               type="text"
               name="country"
               id="country"
               class="form-control"
               required
             />
+            {% comment %} <select 
+            class="selectpicker countrypicker"  
+            name="country"
+            id="country"
+            required
+            ></select> {% endcomment %}
           </div>
 
           <div class="col-sm-6 ml-auto">
@@ -229,6 +256,9 @@
 </div>
 
 <script>
+  document.getElementById('register_date').valueAsDate = new Date(); 
+  document.getElementById('birthday').valueAsDate = new Date();
+
   document.getElementById('myButton').addEventListener('submit', function(event) {
       event.preventDefault(); // Ngăn chặn chuyển hướng mặc định của form
   

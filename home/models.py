@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 class Customer(models.Model):
     register_date = models.DateField()
@@ -23,6 +23,9 @@ class Customer(models.Model):
     phone_number = models.TextField(default='')
     email = models.TextField(default='')
     note = models.TextField(default='')
+    
+    created_date = models.DateTimeField(default=timezone.now)
+    updated_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.plan
