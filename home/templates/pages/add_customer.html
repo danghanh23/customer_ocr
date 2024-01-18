@@ -16,7 +16,7 @@
         <div class="form-group row">
           <div class="col-sm-4">
             <label for="register_date">申込日</label>
-            <input type="date" class="" name="register_date" id="register_date" />
+            <input type="date" class="" name="register_date" id="register_date" required/>
           </div>
         </div>
         
@@ -102,6 +102,7 @@
               name="first_name_kata"
               id="first_name_kata"
               class="form-control"
+              required
             />
           </div>
         </div>
@@ -125,6 +126,7 @@
               name="last_name_kata"
               id="last_name_kata"
               class="form-control"
+              required
             />
           </div>
         </div>
@@ -140,6 +142,7 @@
                 value="male"
                 class="form-check-input"
                 checked
+                required
               />
               <label for="male">男</label>
             </div>
@@ -150,6 +153,7 @@
                 id="female"
                 value="female"
                 class="form-check-input"
+                required
               />
               <label for="female">女</label>
             </div>
@@ -158,7 +162,7 @@
           <div class="col-sm-8">
             <div class="form-group">
               <label for="birthday" class="nowrap mt-2 mr-1">生年月日</label>
-              <input type="date" class=" " name="birthday" id="birthday" />
+              <input type="date" class=" " name="birthday" id="birthday" required/>
             </div>
           </div>
         </div>
@@ -179,12 +183,6 @@
               class="form-control"
               required
             />
-            {% comment %} <select 
-            class="selectpicker countrypicker"  
-            name="country"
-            id="country"
-            required
-            ></select> {% endcomment %}
           </div>
 
           <div class="col-sm-6 ml-auto">
@@ -194,6 +192,7 @@
               name="zip_code"
               id="zip_code"
               class="form-control"
+              required
             />
           </div>
         </div>
@@ -217,6 +216,7 @@
               name="city"
               id="city"
               class="form-control"
+              required
             />
           </div>
         </div>
@@ -234,18 +234,19 @@
               name="phone_number"
               id="phone_number"
               class="form-control"
+              required
             />
           </div>
 
           <div class="col-sm-6">
             <label for="email">メールアドレス</label>
-            <input type="email" name="email" id="email" class="form-control" />
+            <input type="email" name="email" id="email" class="form-control" required/>
           </div>
         </div>
 
         <div class="form-group">
           <label for="note">備考</label>
-          <input type="text" name="note" id="note" class="form-control" />
+          <input type="text" name="note" id="note" class="form-control" required/>
         </div>
 
         <input  id="myButton" type="submit" value="保存" class="btn-primary btn btn-block" />

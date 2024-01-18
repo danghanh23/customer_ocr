@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 import json
 from home.models import Customer
@@ -73,10 +73,12 @@ def addCustomer(request):
             return  render(request, 'pages/add_customer.html')
     return render(request, 'pages/add_customer.html')
 
-def addCustomerxx(request):
-    print("xxxxxxxxxxxxxxxxx111111")
-    print(request.GET.get('campaign'))
-    return HttpResponseRedirect('/')
-   
-    
+def deleteCustomer(request, pk):
+    obj = get_object_or_404(Customer, pk=pk)
+    try:
+        obj.delete()
+        return HttpResponseRedirect('/')
+    except Exception as e:
+        print(e)
+        return HttpResponseRedirect('/')
     

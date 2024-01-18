@@ -1,6 +1,7 @@
 {% extends "pages/base.html" %}
 {% block title %}Home {% endblock %} 
 {% block content %}     
+{% csrf_token %}
 <div class="container-xl">
     <div class="table-responsive">
         <div class="table-wrapper">
@@ -68,7 +69,10 @@
                             <td>
                                 <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
                                 <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                <form action="." method='POST'>
+                                    {% csrf_token %}
+                                    <a  onclick="showDeleteConfirmation('{{ item.pk }}')" href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                </form>
                             </td>
                         </tr>
                     {% endfor %}
@@ -88,6 +92,22 @@
             </div>
         </div>
     </div>  
-</div>           
+</div>       
+
+
+<script>
+    function showDeleteConfirmation(pk) {
+        var isConfirmed = confirm("Are you sure you want to delete record with name " + name + "?");
+
+        // Nếu isConfirmed là true (nghĩa là người dùng đã bấm OK), thực hiện chuyển hướng hoặc gọi hàm xóa
+        if (isConfirmed) {
+            // Bạn có thể chuyển hướng hoặc gọi hàm xóa ở đây, ví dụ:
+            window.location.href = "{% url 'delete_customer' pk=0 %}".replace('0', pk);
+        } else {
+            // Người dùng bấm Cancel, không làm gì cả
+        }
+    }
+</script>
+
 {% endblock %}
 
