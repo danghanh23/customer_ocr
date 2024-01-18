@@ -7,7 +7,6 @@ from django.contrib.auth import logout, login
 # Create your views here.
 def index(request):
     data = {'Customers' :Customer.objects.all().order_by("-register_date") }
-    context = {'data': data}
     return render(request, 'pages/home.html', data)
 
 def contact(request):
@@ -81,4 +80,11 @@ def deleteCustomer(request, pk):
     except Exception as e:
         print(e)
         return HttpResponseRedirect('/')
-    
+
+def showCustomer(request, pk):
+    try:
+        obj = Customer.objects.get(pk=pk)
+        # Do something with your_object
+        return render(request, 'pages/show_customer.html', {'customer': json.dumps(obj.to_dict(), indent=4, sort_keys=True, default=str) })
+    except Customer.DoesNotExist:
+        return HttpResponseRedirect('/')

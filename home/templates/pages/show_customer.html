@@ -7,11 +7,7 @@
       <form action="." method='POST' class="col-md-10 bg-light p-3 my-3">
         {% csrf_token %}
         {{form.as_p}}
-       
-
         <h1 class="text-center text-uppercase h2 my-5">契約申込書</h1>
-
-     
 
         <div class="form-group row">
           <div class="col-sm-4">
@@ -257,31 +253,20 @@
 </div>
 
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var registerDateField = document.getElementById('register_date');
+    var customer2 = {{ customer | safe }};
+    registerDateField.value = customer2.register_date; 
+});
+
+
   document.getElementById('register_date').valueAsDate = new Date(); 
   document.getElementById('birthday').valueAsDate = new Date();
 
   document.getElementById('myButton').addEventListener('submit', function(event) {
       event.preventDefault(); // Ngăn chặn chuyển hướng mặc định của form
-  
       pprint("3421362156416541541235721543213751354566")
-      // Thu thập dữ liệu từ form
-     // var formData = new FormData(this);
-    //  pprint(formData)
-  
-      // Gửi yêu cầu AJAX đến một URL Django
-     // fetch('/add_customer_url/', {
-       //   method: 'POST',
-      //    body: formData,
-      //    headers: {
-      //        'X-Requested-With': 'XMLHttpRequest',
-    //      },
-     // })
-     // .then(response => response.json())
-    //  .then(data => {
-          // Xử lý kết quả từ Django (nếu cần)
-    //      console.log(data);
-    //  })
-    //  .catch(error => console.error('Error:', error));
+     
   });
   </script>
 {% endblock %}

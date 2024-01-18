@@ -42,9 +42,9 @@
                         {% comment %} <th>image</th> {% endcomment %}
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     {% for item in Customers %}
-                        <tr>
+                        <tr onclick="showCustomer('{{ item.pk }}')"  >
                             <td>{{ item.id }}</td>
                             <td>{{ item.register_date }}</td>
                             <td>{{ item.plan }}</td>
@@ -106,6 +106,10 @@
         } else {
             // Người dùng bấm Cancel, không làm gì cả
         }
+    }
+
+    function showCustomer(pk) {
+        window.location.href = "{% url 'show_customer' pk=0 %}".replace('0', pk);
     }
 </script>
 
