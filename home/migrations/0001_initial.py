@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('register_date', models.DateField()),
                 ('plan', models.TextField()),
-                ('chamption', models.TextField()),
+                ('campaign', models.TextField()),
                 ('option', models.TextField()),
                 ('first_name', models.TextField()),
                 ('last_name', models.TextField()),

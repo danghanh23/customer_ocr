@@ -3,23 +3,26 @@ from django.db import models
 # Create your models here.
 class Customer(models.Model):
     register_date = models.DateField()
-    plan = models.TextField()
-    chamption = models.TextField()
-    option = models.TextField()
-    first_name = models.TextField()
-    last_name = models.TextField()
+    plan = models.TextField(default='')
+    campaign = models.TextField(default='')
+    option = models.TextField(default='')
+    first_name = models.TextField(default='')
+    last_name = models.TextField(default='')
     
-    gender = models.BooleanField()
+    first_name_kata = models.TextField(default='')
+    last_name_kata = models.TextField(default='')
+    
+    gender = models.TextField(default='male')
     birthday = models.DateField()
-    country = models.TextField()
-    zip_code = models.TextField()
-    state_province = models.TextField()
-    city = models.TextField()
-    street = models.TextField()
+    country = models.TextField(default='')
+    zip_code = models.TextField(default='')
+    state_province = models.TextField(default='')
+    city = models.TextField(default='')
+    street = models.TextField(default='')
     
-    phone_number = models.TextField()
-    email = models.TextField()
-    note = models.TextField()
+    phone_number = models.TextField(default='')
+    email = models.TextField(default='')
+    note = models.TextField(default='')
 
     def __str__(self):
         return self.plan
