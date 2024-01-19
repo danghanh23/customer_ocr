@@ -44,7 +44,7 @@
                 </thead>
                 <tbody >
                     {% for item in Customers %}
-                        <tr onclick="showCustomer('{{ item.pk }}')"  >
+                        <tr >
                             <td>{{ item.id }}</td>
                             <td>{{ item.register_date }}</td>
                             <td>{{ item.plan }}</td>
@@ -67,8 +67,8 @@
 
                             <td>{{ item.note }}</td>
                             <td>
-                                <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                                <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                <a onclick="showCustomer('{{ item.pk }}')"   href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                                <a onclick="showCustomer('{{ item.pk }}')"   href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 <form action="." method='POST'>
                                     {% csrf_token %}
                                     <a  onclick="showDeleteConfirmation('{{ item.pk }}')" href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>

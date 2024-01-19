@@ -4,7 +4,7 @@
 <div id="wrapper">
   <div class="container">
     <div class="row justify-content-around">
-      <form action="." method='POST' class="col-md-10 bg-light p-3 my-3">
+      <form action="{% url 'update_customer' pk=customerPk %}" method='POST' class="col-md-10 bg-light p-3 my-3">
         {% csrf_token %}
         {{form.as_p}}
         <h1 class="text-center text-uppercase h2 my-5">契約申込書</h1>
@@ -137,7 +137,7 @@
                 id="male"
                 value="male"
                 class="form-check-input"
-                checked
+                {% if customerGender == 'male' %} checked {% endif %}
                 required
               />
               <label for="male">男</label>
@@ -149,6 +149,7 @@
                 id="female"
                 value="female"
                 class="form-check-input"
+                {% if customerGender == 'female' %} checked {% endif %}
                 required
               />
               <label for="female">女</label>
@@ -254,19 +255,64 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var registerDateField = document.getElementById('register_date');
     var customer2 = {{ customer | safe }};
+
+    var registerDateField = document.getElementById('register_date');
     registerDateField.value = customer2.register_date; 
+
+    var planField = document.getElementById('plan');
+    planField.value = customer2.plan; 
+
+    var campaignField = document.getElementById('campaign');
+    campaignField.value = customer2.campaign; 
+
+    var optionField = document.getElementById('option');
+    optionField.value = customer2.option; 
+
+    var firstNameField = document.getElementById('first_name');
+    firstNameField.value = customer2.first_name;
+
+    var lastNameField = document.getElementById('last_name');
+    lastNameField.value = customer2.last_name;
+
+    var firstNameKataField = document.getElementById('first_name_kata');
+    firstNameKataField.value = customer2.first_name_kata;
+
+    var lastNameKataField = document.getElementById('last_name_kata');
+    lastNameKataField.value = customer2.last_name_kata;
+
+    var birthdayField = document.getElementById('birthday'); 
+    birthdayField.value = customer2.birthday; 
+
+    var countryField = document.getElementById('country'); 
+    countryField.value = customer2.country; 
+
+    var zipCodeField = document.getElementById('zip_code'); 
+    zipCodeField.value = customer2.zip_code; 
+
+    var stateProvinceField = document.getElementById('state_province'); 
+    stateProvinceField.value = customer2.state_province; 
+
+    var cityField = document.getElementById('city'); 
+    cityField.value = customer2.city; 
+
+    var streetField = document.getElementById('street'); 
+    streetField.value = customer2.street; 
+
+    var phoneNumberField = document.getElementById('phone_number'); 
+    phoneNumberField.value = customer2.phone_number; 
+
+    var emailField = document.getElementById('email'); 
+    emailField.value = customer2.email; 
+
+    var noteField = document.getElementById('note'); 
+    noteField.value = customer2.note; 
 });
 
 
-  document.getElementById('register_date').valueAsDate = new Date(); 
-  document.getElementById('birthday').valueAsDate = new Date();
-
   document.getElementById('myButton').addEventListener('submit', function(event) {
       event.preventDefault(); // Ngăn chặn chuyển hướng mặc định của form
-      pprint("3421362156416541541235721543213751354566")
-     
+      pprint("3421362156416541541235721543213751354566 222 hanh upadte")
   });
   </script>
 {% endblock %}

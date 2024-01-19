@@ -19,6 +19,10 @@ urlpatterns = [
     
     path('show_customer/<int:pk>', views.showCustomer, name='show_customer'),
     
+    path('update_customer/<int:pk>', views.updateCustomer, name='update_customer'),
+    
+    
+    
     
 ]
 
