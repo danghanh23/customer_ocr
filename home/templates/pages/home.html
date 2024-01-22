@@ -18,34 +18,39 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>register_date <i class="fa fa-sort"></i></th>
-                        <th>plan</th>
-                        <th>campaign <i class="fa fa-sort"></i></th>
+                        <th  >申込日<i class="fa fa-sort"></i></th>
+                        <th>申込プラン</th>
+                        <th>申込キャンペーン<i class="fa fa-sort"></i></th>
 
-                        <th>option</th>
-                        <th>first_name</th>
-                        <th>last_name</th>
-                        <th>gender</th>
+                        <th>申込オプション</th>
+                        <th>苗字</th>
+                        <th>名前</th>
 
-                        <th>birthday</th>
-                        <th>country</th>
-                        <th>zip_code</th>
-                        <th>state_province</th>
+                        <th>苗字 カタ</th>
+                        <th>名前 カタ</th>
 
-                        <th>city</th>
-                        <th>street</th>
-                        <th>phone_number</th>
-                        <th>email</th>
+                        {% comment %} <th>性別</th> {% endcomment %}
 
-                        <th>note</th>
-                        <th>Action</th>
+                        {% comment %} <th>生年月日</th>
+                        <th>Country</th>
+                        <th>Zip/Postal Code</th>
+                        <th>State/Province</th>
+
+                        <th>City</th>
+                        <th>Street</th>
+                        <th>電話番号</th>
+                        <th>メールアドレス</th>
+
+                        <th>備考</th>
+                        {% endcomment %}
                         {% comment %} <th>image</th> {% endcomment %}
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody >
                     {% for item in Customers %}
                         <tr >
-                            <td>{{ item.id }}</td>
+                            <td></td>
                             <td>{{ item.register_date }}</td>
                             <td>{{ item.plan }}</td>
                             <td>{{ item.campaign }}</td>
@@ -53,9 +58,13 @@
                             <td>{{ item.option }}</td>
                             <td>{{ item.first_name }}</td>
                             <td>{{ item.last_name }}</td>
-                            <td>{{ item.gender }}</td>
 
-                            <td>{{ item.birthday }}</td>
+                            <td>{{ item.first_name_kata }}</td>
+                            <td>{{ item.last_name_kata }}</td>
+
+                            {% comment %} <td>{{ item.gender }}</td> {% endcomment %}
+
+                            {% comment %} <td>{{ item.birthday }}</td>
                             <td>{{ item.country }}</td>
                             <td>{{ item.zip_code }}</td>
                             <td>{{ item.state_province }}</td>
@@ -66,8 +75,9 @@
                             <td>{{ item.email }}</td>
 
                             <td>{{ item.note }}</td>
+                            {% endcomment %}
                             <td>
-                                <a onclick="showCustomer('{{ item.pk }}')"   href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                                {% comment %} <a onclick="showCustomer('{{ item.pk }}')"   href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a> {% endcomment %}
                                 <a onclick="showCustomer('{{ item.pk }}')"   href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 <form action="." method='POST'>
                                     {% csrf_token %}
@@ -78,7 +88,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <div class="clearfix">
+            {% comment %} <div class="clearfix">
                 <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                 <ul class="pagination">
                     <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
@@ -89,7 +99,7 @@
                     <li class="page-item"><a href="#" class="page-link">5</a></li>
                     <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
                 </ul>
-            </div>
+            </div> {% endcomment %}
         </div>
     </div>  
 </div>       

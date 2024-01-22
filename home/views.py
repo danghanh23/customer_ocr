@@ -1,13 +1,43 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 import json
-from home.models import Customer
+from home.models import Customer, CustomerKintone
 from .forms import CustomerForm, RegistrationForm
 from django.contrib.auth import logout, login
+import requests
+from datetime import datetime
 # Create your views here.
 def index(request):
-    data = {'Customers' :Customer.objects.all().order_by("-register_date") }
+    records = []
+    url = 'https://2xoympzg0muc.cybozu.com/k/v1/records.json'
+    
+    
+    header = {
+    "Content-Type":"application/json",
+    "X-Cybozu-API-Token":"CDCsGSA02YCWzRLfBWSI7NqHuvjHEh1vcvOAEYn7",
+    "X-Cybozu-Authorization":"bGVkYW5naGFuaEBnLmRlbnNhbi1naW56YS5jby5qcDpIYW5oMTk5OQ==",
+    }
+    payload = {   
+    "app" : 4
+    }
+    result = requests.get(url,  data=json.dumps(payload), headers=header)
+    
+    if result.status_code == 200:
+        records = result.json().get('records', [])
+    else:
+        records = []
+    listModelKintone = []
+    try:
+        for item in records:
+            customerKintone =  CustomerKintone.convertJsonToModel(item)
+            listModelKintone.append(customerKintone)
+            listModelKintone
+            # customerKintone.save()
+    except Exception as e:
+        print(e)
+    data = {'Customers' : sorted(listModelKintone, key=lambda x: x.id, reverse=True)}
     return render(request, 'pages/home.html', data)
+    
 
 def contact(request):
     return render(request, 'pages/contact.html')
