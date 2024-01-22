@@ -160,7 +160,7 @@ def deleteCustomerApi(id):
         print("Cannot delete customer ERROR!!!")
 
 
-def createCustomer(request):
+def createCustomerApi(request):
     url = 'https://2xoympzg0muc.cybozu.com/k/v1/record.json'
     
     header = {

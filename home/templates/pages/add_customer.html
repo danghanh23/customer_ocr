@@ -31,9 +31,8 @@
             class="form-control"
             required>
               <option selected>Select plan</option>
-              <option value="プラン A">プラン A</option>
-              <option value="プラン B">プラン B</option>
-              <option value="プラン C">プラン C</option>
+              <option value="プランA">プランA</option>
+              <option value="プランB">プランB</option>
             </select>
           </div>
 
@@ -47,9 +46,8 @@
             class="form-control"
             required>
               <option selected>Select Campaign</option>
-              <option value="キャンペーン A">キャンペーン A</option>
-              <option value="キャンペーン B">キャンペーン B</option>
-              <option value="キャンペーン C">キャンペーン C</option>
+              <option value="キャンペーン1">キャンペーン1</option>
+              <option value="キャンペーン2">キャンペーン2</option>
             </select>
           </div>
         </div>
@@ -66,9 +64,8 @@
             class="form-control"
             required>
               <option selected>Select option</option>
-              <option value="オプション A">オプション A</option>
-              <option value="オプション B">オプション B</option>
-              <option value="オプション C">オプション C</option>
+              <option value="オプションA">オプションA</option>
+              <option value="オプションB">オプションB</option>
             </select>
           </div>
         </div>
@@ -139,7 +136,7 @@
                 type="radio"
                 name="gender"
                 id="male"
-                value="male"
+                value="男"
                 class="form-check-input"
                 checked
                 required
@@ -151,7 +148,7 @@
                 type="radio"
                 name="gender"
                 id="female"
-                value="female"
+                value="女"
                 class="form-check-input"
                 required
               />
@@ -230,10 +227,13 @@
           <div class="col-sm-6">
             <label for="phone_number">電話番号</label>
             <input
-              type="phone_number"
+              type="tel"
               name="phone_number"
               id="phone_number"
               class="form-control"
+              pattern="[0-9]+"
+              title="Please enter only numbers"
+              maxlength="11"
               required
             />
           </div>
@@ -246,7 +246,7 @@
 
         <div class="form-group">
           <label for="note">備考</label>
-          <input type="text" name="note" id="note" class="form-control" required/>
+          <input type="text" name="note" id="note" class="form-control" />
         </div>
 
         <input  id="myButton" type="submit" value="保存" class="btn-primary btn btn-block" />
