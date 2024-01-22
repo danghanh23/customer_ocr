@@ -159,3 +159,7 @@ class Customer(models.Model):
     
     # a = Customer(register_date="2024-01-15", plan="plan b", gender=True, birthday="2024-01-17")
     # a.save()
+    
+    
+    
+    

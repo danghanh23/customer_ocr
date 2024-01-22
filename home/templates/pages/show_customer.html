@@ -29,7 +29,6 @@
               <option selected>Select plan</option>
               <option value="プランA">プランA</option>
               <option value="プランB">プランB</option>
-              <option value="プランC">プランC</option>
             </select>
           </div>
 
@@ -133,7 +132,7 @@
                 type="radio"
                 name="gender"
                 id="male"
-                value="male"
+                value="男"
                 class="form-check-input"
                 {% if customerGender == '男' %} checked {% endif %}
                 required
@@ -145,7 +144,7 @@
                 type="radio"
                 name="gender"
                 id="female"
-                value="female"
+                value="女"
                 class="form-check-input"
                 {% if customerGender == '女' %} checked {% endif %}
                 required
@@ -225,10 +224,11 @@
           <div class="col-sm-6">
             <label for="phone_number">電話番号</label>
             <input
-              type="phone_number"
+              type="tel"
               name="phone_number"
               id="phone_number"
               class="form-control"
+              pattern="[0-9]+"
               required
             />
           </div>
@@ -241,7 +241,7 @@
 
         <div class="form-group">
           <label for="note">備考</label>
-          <input type="text" name="note" id="note" class="form-control" required/>
+          <input type="text" name="note" id="note" class="form-control" />
         </div>
 
         <input  id="myButton" type="submit" value="保存" class="btn-primary btn btn-block" />
