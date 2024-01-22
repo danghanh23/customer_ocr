@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 import json
+from home.api.customer_kintone_api import getListCustomer, listModelKintone, find_by_id
 from home.models import Customer, CustomerKintone
 from .forms import CustomerForm, RegistrationForm
 from django.contrib.auth import logout, login
@@ -8,34 +9,7 @@ import requests
 from datetime import datetime
 # Create your views here.
 def index(request):
-    records = []
-    url = 'https://2xoympzg0muc.cybozu.com/k/v1/records.json'
-    
-    
-    header = {
-    "Content-Type":"application/json",
-    "X-Cybozu-API-Token":"CDCsGSA02YCWzRLfBWSI7NqHuvjHEh1vcvOAEYn7",
-    "X-Cybozu-Authorization":"bGVkYW5naGFuaEBnLmRlbnNhbi1naW56YS5jby5qcDpIYW5oMTk5OQ==",
-    }
-    payload = {   
-    "app" : 4
-    }
-    result = requests.get(url,  data=json.dumps(payload), headers=header)
-    
-    if result.status_code == 200:
-        records = result.json().get('records', [])
-    else:
-        records = []
-    listModelKintone = []
-    try:
-        for item in records:
-            customerKintone =  CustomerKintone.convertJsonToModel(item)
-            listModelKintone.append(customerKintone)
-            listModelKintone
-            # customerKintone.save()
-    except Exception as e:
-        print(e)
-    data = {'Customers' : sorted(listModelKintone, key=lambda x: x.id, reverse=True)}
+    data = {'Customers' : listModelKintone}
     return render(request, 'pages/home.html', data)
     
 
@@ -113,13 +87,13 @@ def deleteCustomer(request, pk):
 
 def showCustomer(request, pk):
     try:
-        obj = Customer.objects.get(pk=pk)
+        obj = find_by_id(pk)
         return render(request, 'pages/show_customer.html', {
-            'customer': json.dumps(obj.to_dict(), indent=4, sort_keys=True, default=str),
+            'customer': json.dumps(obj.to_json(), indent=4, sort_keys=True, default=str),
             "customerGender": obj.gender,
-            "customerPk": obj.pk
+            "customerPk": obj.id
             })
-    except Customer.DoesNotExist:
+    except Exception as e:
         return HttpResponseRedirect('/')
     
     

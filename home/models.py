@@ -45,6 +45,30 @@ class CustomerKintone:
         self.email = email
         self.note = note
         self.id = id
+    def to_json(self):
+        return {
+            'id': self.id,
+            "register_date": self.register_date,
+            "plan": self.plan,
+            "campaign": self.campaign,
+            "option": self.option,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            
+            "first_name_kata": self.first_name_kata,
+            "last_name_kata": self.last_name_kata,
+            "gender": self.gender,
+            "birthday": self.birthday,
+            "country": self.country,
+            "zip_code": self.zip_code,
+            "state_province": self.state_province,
+            "city": self.city,
+            
+            "street": self.street,
+            "phone_number": self.phone_number,
+            "email": self.email,
+            "note": self.note,
+        }
     
     def convertJsonToModel(json):
         model = CustomerKintone(

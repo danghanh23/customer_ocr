@@ -78,10 +78,10 @@
                             {% endcomment %}
                             <td>
                                 {% comment %} <a onclick="showCustomer('{{ item.pk }}')"   href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a> {% endcomment %}
-                                <a onclick="showCustomer('{{ item.pk }}')"   href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                <a onclick="showCustomer('{{ item.id }}')"   href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 <form action="." method='POST'>
                                     {% csrf_token %}
-                                    <a  onclick="showDeleteConfirmation('{{ item.pk }}')" href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    <a  onclick="showDeleteConfirmation('{{ item.id }}')" href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </form>
                             </td>
                         </tr>

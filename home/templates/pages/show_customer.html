@@ -27,9 +27,9 @@
             class="form-control"
             required>
               <option selected>Select plan</option>
-              <option value="プラン A">プラン A</option>
-              <option value="プラン B">プラン B</option>
-              <option value="プラン C">プラン C</option>
+              <option value="プランA">プランA</option>
+              <option value="プランB">プランB</option>
+              <option value="プランC">プランC</option>
             </select>
           </div>
 
@@ -43,9 +43,8 @@
             class="form-control"
             required>
               <option selected>Select Campaign</option>
-              <option value="キャンペーン A">キャンペーン A</option>
-              <option value="キャンペーン B">キャンペーン B</option>
-              <option value="キャンペーン C">キャンペーン C</option>
+              <option value="キャンペーン1">キャンペーン1</option>
+              <option value="キャンペーン2">キャンペーン2</option>
             </select>
           </div>
         </div>
@@ -62,9 +61,8 @@
             class="form-control"
             required>
               <option selected>Select option</option>
-              <option value="オプション A">オプション A</option>
-              <option value="オプション B">オプション B</option>
-              <option value="オプション C">オプション C</option>
+              <option value="オプションA">オプションA</option>
+              <option value="オプションB">オプションB</option>
             </select>
           </div>
         </div>
@@ -137,7 +135,7 @@
                 id="male"
                 value="male"
                 class="form-check-input"
-                {% if customerGender == 'male' %} checked {% endif %}
+                {% if customerGender == '男' %} checked {% endif %}
                 required
               />
               <label for="male">男</label>
@@ -149,7 +147,7 @@
                 id="female"
                 value="female"
                 class="form-check-input"
-                {% if customerGender == 'female' %} checked {% endif %}
+                {% if customerGender == '女' %} checked {% endif %}
                 required
               />
               <label for="female">女</label>
@@ -261,6 +259,7 @@
     registerDateField.value = customer2.register_date; 
 
     var planField = document.getElementById('plan');
+    console.log(customer2.plan)
     planField.value = customer2.plan; 
 
     var campaignField = document.getElementById('campaign');
