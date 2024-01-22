@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 import json
-from home.api.customer_kintone_api import getListCustomer, listModelKintone, find_by_id, editCustomer
+from home.api.customer_kintone_api import getListCustomer, listModelKintone, find_by_id, editCustomer, deleteCustomerApi
 from home.models import Customer, CustomerKintone
 from .forms import CustomerForm, RegistrationForm
 from django.contrib.auth import logout, login
@@ -78,8 +78,8 @@ def addCustomer(request):
 
 def deleteCustomer(request, pk):
     try:
-        obj = get_object_or_404(Customer, pk=pk)
-        obj.delete()
+        obj = find_by_id(pk)
+        deleteCustomerApi(pk)
         return HttpResponseRedirect('/')
     except Exception as e:
         print(e)
@@ -100,34 +100,6 @@ def showCustomer(request, pk):
 def updateCustomer(request, pk):
     try:
         editCustomer(pk, request)
-        # obj = Customer.objects.get(pk=pk)
-        # if request.method == 'POST':
-        #     try:
-        #         obj.plan = request.POST.get('plan')
-        #         obj.campaign = request.POST.get('campaign')
-        #         obj.option = request.POST.get('option')
-        #         obj.first_name = request.POST.get('first_name')
-        #         obj.last_name = request.POST.get('last_name')
-                
-        #         obj.first_name_kata = request.POST.get('first_name_kata')
-        #         obj.last_name_kata = request.POST.get('last_name_kata')
-                
-        #         obj.gender = request.POST.get('gender')
-        #         obj.birthday = request.POST.get('birthday')
-        #         obj.country = request.POST.get('country')
-        #         obj.zip_code = request.POST.get('zip_code')
-        #         obj.state_province = request.POST.get('state_province')
-        #         obj.city = request.POST.get('city')
-        #         obj.street = request.POST.get('street')
-                
-        #         obj.phone_number = request.POST.get('phone_number')
-        #         obj.email = request.POST.get('email')
-        #         obj.note = request.POST.get('note')
-        #         obj.save()
-        #         obj.unique_error_message
-        #         return HttpResponseRedirect('/')
-        #     except Exception as e:
-        #         print(e)
         return HttpResponseRedirect('/')
 
     except Customer.DoesNotExist:

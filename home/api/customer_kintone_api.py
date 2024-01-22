@@ -139,4 +139,118 @@ def editCustomer(id, request):
         print("Update customer success")
     else:
         print("Cannot update customer ERROR!!!")
+        
+        
+def deleteCustomerApi(id):
+    url = 'https://2xoympzg0muc.cybozu.com/k/v1/records.json'
+    header = {
+    "Content-Type":"application/json",
+    "X-Cybozu-API-Token":"CDCsGSA02YCWzRLfBWSI7NqHuvjHEh1vcvOAEYn7",
+    "X-Cybozu-Authorization":"bGVkYW5naGFuaEBnLmRlbnNhbi1naW56YS5jby5qcDpIYW5oMTk5OQ==",
+    }
+    payload = {
+        "app": 4,
+        "ids": [int(id)],
+    }
+    result = requests.delete(url,  data=json.dumps(payload), headers=header)
+    
+    if result.status_code == 200:
+        print("Delete customer success")
+    else:
+        print("Cannot delete customer ERROR!!!")
 
+
+def createCustomer(request):
+    url = 'https://2xoympzg0muc.cybozu.com/k/v1/record.json'
+    
+    header = {
+    "Content-Type":"application/json",
+    "X-Cybozu-API-Token":"CDCsGSA02YCWzRLfBWSI7NqHuvjHEh1vcvOAEYn7",
+    "X-Cybozu-Authorization":"bGVkYW5naGFuaEBnLmRlbnNhbi1naW56YS5jby5qcDpIYW5oMTk5OQ==",
+    }
+    payload = {
+        "app": 4,
+        "record": {
+            "register_date": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('register_date')
+                },
+            "plan": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('plan')
+                },
+            "campaign": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('campaign')
+                },
+            "option": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('option')
+                },
+            "first_name":{
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('first_name')
+                },
+            "last_name": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('last_name')
+                },
+            
+            "first_name_kata": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('first_name_kata')
+                },
+            "last_name_kata": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('last_name_kata')
+                },
+            "gender": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('gender')
+                },
+            "birthday": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('birthday')
+                },
+            "country": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('country')
+                },
+            "zip_code": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('zip_code')
+                },
+            "state_province": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('state_province')
+                },
+            "city": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('city')
+                },
+            
+            "street": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('street')
+                },
+            "phone_number": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('phone_number')
+                },
+            "email": {
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('email')
+                },
+            "note":{
+                "type": "SINGLE_LINE_TEXT",
+                "value": request.POST.get('note')
+                }
+        }
+    }
+    result = requests.post(url,  data=json.dumps(payload), headers=header)
+    
+    if result.status_code == 200:
+        listModelKintone = getListCustomer()
+        print("Create customer success")
+    else:
+        print("Cannot Create customer ERROR!!!")
