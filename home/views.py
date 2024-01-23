@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 import json
-from home.api.customer_SF_api import getListCustomerSF, get1CustomerSF
+from home.api.customer_SF_api import getListCustomerSF, get1CustomerSF, editCustomerSF
 from home.api.customer_kintone_api import getListCustomer, listModelKintone, find_by_id, editCustomer, deleteCustomerApi, createCustomerApi
 
 from .forms import CustomerForm, RegistrationForm
@@ -12,7 +12,6 @@ from datetime import datetime
 def index(request):
     data = {'Customers' : getListCustomerSF(request)}
     return render(request, 'pages/home.html', data)
-    
 
 def contact(request):
     return render(request, 'pages/contact.html')
@@ -67,7 +66,7 @@ def showCustomer(request, pk):
         return render(request, 'pages/show_customer.html', {
             'customer': json.dumps(obj.to_json(), indent=4, sort_keys=True, default=str),
             "customerGender": obj.sex,
-            "customerPk": obj.id
+            "customerPk": str(obj.id)
             })
     except Exception as e:
         return HttpResponseRedirect('/')
@@ -75,8 +74,8 @@ def showCustomer(request, pk):
     
 def updateCustomer(request, pk):
     try:
-        editCustomer(pk, request)
+        editCustomerSF(request, pk)
         return HttpResponseRedirect('/')
-
-    except Customer.DoesNotExist:
+    except Exception as e:
+        print("Cannot update customer ERROR!!!")
         return HttpResponseRedirect('/')

@@ -18,7 +18,6 @@
                 name="data_name"
                 id="data_name"
                 class="form-control"
-                required
               />
           </div>
 
@@ -29,7 +28,6 @@
                 name="plan"
                 id="plan"
                 class="form-control"
-                required
               />
           </div>
         </div>
@@ -43,7 +41,6 @@
                 name="option"
                 id="option"
                 class="form-control"
-                required
               />
           </div>
 
@@ -54,7 +51,6 @@
                 name="campaign"
                 id="campaign"
                 class="form-control"
-                required
               />
           </div>
         </div>
@@ -62,7 +58,7 @@
         <div class="form-group row">
           <div class="col-sm-4">
             <label for="register_date">申込日</label>
-            <input type="date" class="" name="register_date" id="register_date" required/>
+            <input type="date" class="" name="register_date" id="register_date" required />
           </div>
         </div>
        
@@ -75,7 +71,6 @@
                 name="name"
                 id="name"
                 class="form-control"
-                required
               />
           </div>
 
@@ -86,7 +81,6 @@
                 name="name_kata"
                 id="name_kata"
                 class="form-control"
-                required
               />
           </div>
         </div>
@@ -104,7 +98,6 @@
                 value="男"
                 class="form-check-input"
                 {% if customerGender == '男' %} checked {% endif %}
-                required
               />
               <label for="male">男</label>
             </div>
@@ -116,7 +109,6 @@
                 value="女"
                 class="form-check-input"
                 {% if customerGender == '女' %} checked {% endif %}
-                required
               />
               <label for="female">女</label>
             </div>
@@ -125,7 +117,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="birthday" class="nowrap mt-2 mr-1">生年月日</label>
-              <input type="date" class=" " name="birthday" id="birthday" required/>
+              <input type="date" class=" " name="birthday" id="birthday"  required/>
             </div>
           </div>
         </div>
@@ -138,7 +130,6 @@
                 name="postal_code"
                 id="postal_code"
                 class="form-control"
-                required
               />
           </div>
 
@@ -149,7 +140,6 @@
                 name="address"
                 id="address"
                 class="form-control"
-                required
               />
           </div>
         </div>
@@ -165,13 +155,12 @@
               pattern="[0-9]+"
               title="Please enter only numbers"
               maxlength="11"
-              required
             />
           </div>
 
           <div class="col-sm-6">
             <label for="email">メールアドレス</label>
-            <input type="email" name="email" id="email" class="form-control" required/>
+            <input type="email" name="email" id="email" class="form-control" />
           </div>
         </div>
 
@@ -204,15 +193,18 @@
       var planField = document.getElementById('plan');
       planField.value = customer2.plan; 
     }
-    if (customer2.campaign != "") {
-      var campaignField = document.getElementById('campaign');
-      campaignField.value = customer2.campaign; 
-    }
 
     if (customer2.option != "") {
       var optionField = document.getElementById('option');
       optionField.value = customer2.option; 
     }
+    
+    if (customer2.campaign != "") {
+      var campaignField = document.getElementById('campaign');
+      campaignField.value = customer2.campaign; 
+    }
+
+   
 
     if (customer2.appDate != "") {
       var appDateField = document.getElementById('register_date');

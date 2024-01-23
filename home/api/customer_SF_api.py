@@ -75,99 +75,39 @@ def find_by_id(id):
         if item.id == id:
             return item
     
-def editCustomer(id, request):
-    url = 'https://2xoympzg0muc.cybozu.com/k/v1/record.json'
+def editCustomerSF(request, id):
+    url = 'https://densancom-dev-ed.develop.my.salesforce.com/services/data/v52.0/sobjects/AppData__c/'+ str(id)
     
     header = {
     "Content-Type":"application/json",
-    "X-Cybozu-API-Token":"CDCsGSA02YCWzRLfBWSI7NqHuvjHEh1vcvOAEYn7",
-    "X-Cybozu-Authorization":"bGVkYW5naGFuaEBnLmRlbnNhbi1naW56YS5jby5qcDpIYW5oMTk5OQ==",
+    "Authorization":"Bearer " + str( request.session.get('token', 'Guest')),
+    "Cookie":"BrowserId=50aM9LjREe6XJKUSR7MzXA; CookieConsentPolicy=0:1; LSKey-c$CookieConsentPolicy=0:1",
     }
     payload = {
-        "app": 4,
-        "id": int(id),
-        "record": {
-            "register_date": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('register_date')
-                },
-            "plan": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('plan')
-                },
-            "campaign": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('campaign')
-                },
-            "option": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('option')
-                },
-            "first_name":{
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('first_name')
-                },
-            "last_name": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('last_name')
-                },
-            
-            "first_name_kata": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('first_name_kata')
-                },
-            "last_name_kata": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('last_name_kata')
-                },
-            "gender": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('gender')
-                },
-            "birthday": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('birthday')
-                },
-            "country": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('country')
-                },
-            "zip_code": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('zip_code')
-                },
-            "state_province": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('state_province')
-                },
-            "city": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('city')
-                },
-            
-            "street": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('street')
-                },
-            "phone_number": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('phone_number')
-                },
-            "email": {
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('email')
-                },
-            "note":{
-                "type": "SINGLE_LINE_TEXT",
-                "value": request.POST.get('note')
-                }
-        }
+        "Name": request.POST.get('data_name') if request.POST.get('data_name') != '' else "",
+        "plan_code__c": request.POST.get('plan') if request.POST.get('plan') != '' else "",
+        "option_code__c": request.POST.get('option') if request.POST.get('option') != '' else "",
+        "campaign_code__c": request.POST.get('campaign') if request.POST.get('campaign') != '' else "",
+        "app_date__c": request.POST.get('register_date') if request.POST.get('register_date') != '' else "",
+        "name__c": request.POST.get('name') if request.POST.get('name') != '' else "",
+        "name_kana__c": request.POST.get('name_kata') if request.POST.get('name_kata') != '' else "",
+        
+        "sex__c": request.POST.get('gender') if request.POST.get('gender') != '' else "",
+        "birthday__c": request.POST.get('birthday') if request.POST.get('birthday') != '' else "",
+        "post_code__c": request.POST.get('postal_code') if request.POST.get('postal_code') != '' else "",
+        "address__c": request.POST.get('address') if request.POST.get('address') != '' else "",
+        "phone_number__c": request.POST.get('phone_number') if request.POST.get('phone_number') != '' else "",
+        "mail_address__c": request.POST.get('email') if request.POST.get('email') != '' else "",
+        "remarks__c": request.POST.get('note') if request.POST.get('note') != '' else "",
+        "status__c": request.POST.get('state') if request.POST.get('state') != '' else "",
     }
-    result = requests.put(url,  data=json.dumps(payload), headers=header)
+    result = requests.patch(url,  data=json.dumps(payload), headers=header)
     
-    if result.status_code == 200:
-        listModelSF = getListCustomerSF()
+    if result.status_code == 204:
         print("Update customer success")
+    elif result.status_code == 401:
+        getToken(request)
+        editCustomerSF(request, id)
     else:
         print("Cannot update customer ERROR!!!")
         
