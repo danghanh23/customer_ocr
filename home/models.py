@@ -62,6 +62,7 @@ class CustomerSF_full:
     
     def convertJsonToModel(json):
         tmp = json['plan_code__c'] if  json['plan_code__c'] != None else ""
+        stringAddress = json['address__c']["country"]   if  json['address__c'] != None else "" 
         model = CustomerSF_full(
             id = json['Id'],
             dataName = json['Name'],
@@ -74,7 +75,7 @@ class CustomerSF_full:
             sex = json['sex__c']if  json['sex__c'] != None else "",
             birthday =  datetime.strptime(json['birthday__c'], "%Y-%m-%d").date() if  json['birthday__c'] != None else "",
             # post = json['address__postalcode__s']if  json['address__postalcode__s'] != None else "",
-            address = json['address__c']if  json['address__c'] != None else "",
+            address = stringAddress,
             phoneNumber = json['phone_number__c']if  json['phone_number__c'] != None else "",
             mailAddress = json['mail_address__c']if  json['mail_address__c'] != None else "",
             remarks = json['remarks__c']if  json['remarks__c'] != None else "",

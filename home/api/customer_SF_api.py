@@ -92,7 +92,7 @@ def editCustomerSF(request, id):
         "sex__c": request.POST.get('gender') if request.POST.get('gender') != '' else "",
         "birthday__c": request.POST.get('birthday') if request.POST.get('birthday') != '' else "",
         # "address__postalcode__s": request.POST.get('postal_code') if request.POST.get('postal_code') != '' else "",
-        "address__c": request.POST.get('address') if request.POST.get('address') != '' else "",
+        # "address__c": request.POST.get('address') if request.POST.get('address') != '' else "",
         "phone_number__c": request.POST.get('phone_number') if request.POST.get('phone_number') != '' else "",
         "mail_address__c": request.POST.get('email') if request.POST.get('email') != '' else "",
         "remarks__c": request.POST.get('note') if request.POST.get('note') != '' else "",
