@@ -27,14 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
@@ -123,6 +122,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL =  '/media/'
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 900
 
 # PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')

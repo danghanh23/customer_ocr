@@ -18,32 +18,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th  >申込日<i class="fa fa-sort"></i></th>
-                        <th>申込プラン</th>
-                        <th>申込キャンペーン<i class="fa fa-sort"></i></th>
-
-                        <th>申込オプション</th>
-                        <th>苗字</th>
-                        <th>名前</th>
-
-                        <th>苗字 カタ</th>
-                        <th>名前 カタ</th>
-
-                        {% comment %} <th>性別</th> {% endcomment %}
-
-                        {% comment %} <th>生年月日</th>
-                        <th>Country</th>
-                        <th>Zip/Postal Code</th>
-                        <th>State/Province</th>
-
-                        <th>City</th>
-                        <th>Street</th>
-                        <th>電話番号</th>
-                        <th>メールアドレス</th>
-
-                        <th>備考</th>
-                        {% endcomment %}
-                        {% comment %} <th>image</th> {% endcomment %}
+                        <th>申込データ名<i class="fa fa-sort"></i></th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -51,33 +26,8 @@
                     {% for item in Customers %}
                         <tr >
                             <td></td>
-                            <td>{{ item.register_date }}</td>
-                            <td>{{ item.plan }}</td>
-                            <td>{{ item.campaign }}</td>
-
-                            <td>{{ item.option }}</td>
-                            <td>{{ item.first_name }}</td>
-                            <td>{{ item.last_name }}</td>
-
-                            <td>{{ item.first_name_kata }}</td>
-                            <td>{{ item.last_name_kata }}</td>
-
-                            {% comment %} <td>{{ item.gender }}</td> {% endcomment %}
-
-                            {% comment %} <td>{{ item.birthday }}</td>
-                            <td>{{ item.country }}</td>
-                            <td>{{ item.zip_code }}</td>
-                            <td>{{ item.state_province }}</td>
-
-                            <td>{{ item.city }}</td>
-                            <td>{{ item.street }}</td>
-                            <td>{{ item.phone_number }}</td>
-                            <td>{{ item.email }}</td>
-
-                            <td>{{ item.note }}</td>
-                            {% endcomment %}
+                            <td>{{ item.dataName }}</td>
                             <td>
-                                {% comment %} <a onclick="showCustomer('{{ item.pk }}')"   href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a> {% endcomment %}
                                 <a onclick="showCustomer('{{ item.id }}')"   href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 <form action="." method='POST'>
                                     {% csrf_token %}
@@ -88,18 +38,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-            {% comment %} <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                </ul>
-            </div> {% endcomment %}
+           
         </div>
     </div>  
 </div>       
@@ -108,16 +47,11 @@
 <script>
     function showDeleteConfirmation(pk) {
         var isConfirmed = confirm("Are you sure you want to delete record with name " + name + "?");
-
-        // Nếu isConfirmed là true (nghĩa là người dùng đã bấm OK), thực hiện chuyển hướng hoặc gọi hàm xóa
         if (isConfirmed) {
-            // Bạn có thể chuyển hướng hoặc gọi hàm xóa ở đây, ví dụ:
             window.location.href = "{% url 'delete_customer' pk=0 %}".replace('0', pk);
         } else {
-            // Người dùng bấm Cancel, không làm gì cả
         }
     }
-
     function showCustomer(pk) {
         window.location.href = "{% url 'show_customer' pk=0 %}".replace('0', pk);
     }

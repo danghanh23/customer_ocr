@@ -12,6 +12,54 @@
         <h1 class="text-center text-uppercase h2 my-5">契約申込書</h1>
 
      
+        <div class="form-group row">
+          <div class="col-sm-6">
+              <label for="data_name">申込データ名</label>
+              <input
+                type="text"
+                name="data_name"
+                id="data_name"
+                class="form-control"
+                required
+              />
+          </div>
+
+          <div class="col-sm-6 ml-auto">
+            <label for="plan">プランコード</label>
+              <input
+                type="text"
+                name="plan"
+                id="plan"
+                class="form-control"
+                required
+              />
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <div class="col-sm-6">
+              <label for="option">オプションコード</label>
+              <input
+                type="text"
+                name="option"
+                id="option"
+                class="form-control"
+                required
+              />
+          </div>
+
+          <div class="col-sm-6 ml-auto">
+            <label for="campaign">キャンペーンコード</label>
+              <input
+                type="text"
+                name="campaign"
+                id="campaign"
+                class="form-control"
+                required
+              />
+          </div>
+        </div>
 
         <div class="form-group row">
           <div class="col-sm-4">
@@ -19,117 +67,36 @@
             <input type="date" class="" name="register_date" id="register_date" required/>
           </div>
         </div>
-        
+       
+
         <div class="form-group row">
           <div class="col-sm-6">
-            <label for="plan">申込プラン</label>
-            <select 
-            class="form-select" 
-            aria-label="Default select example" 
-            name="plan"
-            id="plan"
-            class="form-control"
-            required>
-              <option selected>Select plan</option>
-              <option value="プランA">プランA</option>
-              <option value="プランB">プランB</option>
-            </select>
+              <label for="name">氏名</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                required
+              />
           </div>
 
           <div class="col-sm-6 ml-auto">
-            <label for="campaign">申込キャンペーン</label>
-            <select 
-            class="form-select" 
-            aria-label="Default select example" 
-            name="campaign"
-            id="campaign"
-            class="form-control"
-            required>
-              <option selected>Select Campaign</option>
-              <option value="キャンペーン1">キャンペーン1</option>
-              <option value="キャンペーン2">キャンペーン2</option>
-            </select>
+            <label for="name_kata">氏名カナ</label>
+              <input
+                type="text"
+                name="name_kata"
+                id="name_kata"
+                class="form-control"
+                required
+              />
           </div>
         </div>
+
+      
 
         <div class="form-group row">
           <div class="col-sm-6">
-            <label for="option">申込オプション</label>
-            {% comment %} <input type="text" name="option" id="option" class="form-control" /> {% endcomment %}
-            <select 
-            class="form-select" 
-            aria-label="Default select example" 
-            name="option"
-            id="option"
-            class="form-control"
-            required>
-              <option selected>Select option</option>
-              <option value="オプションA">オプションA</option>
-              <option value="オプションB">オプションB</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-sm-6">
-            <label for="name">氏名</label>
-          </div>
-
-          <div class="col-sm-6 ml-auto">
-            <label for="first_name_kata">氏名-カナ</label>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-sm-6">
-            <label for="first_name">First Name</label>
-            <input
-              type="text"
-              name="first_name"
-              id="first_name"
-              class="form-control"
-              required
-            />
-          </div>
-
-          <div class="col-sm-6 ml-auto">
-            <label for="first_name_kata">First Name</label>
-            <input
-              type="text"
-              name="first_name_kata"
-              id="first_name_kata"
-              class="form-control"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-sm-6">
-            <label for="last_name">Last Name</label>
-            <input
-              type="text"
-              name="last_name"
-              id="last_name"
-              class="form-control"
-              required
-            />
-          </div>
-
-          <div class="col-sm-6 ml-auto">
-            <label for="last_name_kata">Last Name</label>
-            <input
-              type="text"
-              name="last_name_kata"
-              id="last_name_kata"
-              class="form-control"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-sm-4">
             <label for="gender">性別</label><br />
             <div class="form-check form-check-inline">
               <input
@@ -156,7 +123,7 @@
             </div>
           </div>
 
-          <div class="col-sm-8">
+          <div class="col-sm-6">
             <div class="form-group">
               <label for="birthday" class="nowrap mt-2 mr-1">生年月日</label>
               <input type="date" class=" " name="birthday" id="birthday" required/>
@@ -164,64 +131,34 @@
           </div>
         </div>
 
+        <div class="form-group row">
+          <div class="col-sm-6">
+              <label for="postal_code">郵便番号</label>
+              <input
+                type="text"
+                name="postal_code"
+                id="postal_code"
+                class="form-control"
+                required
+              />
+          </div>
+
+          <div class="col-sm-6 ml-auto">
+            <label for="address">住所</label>
+              <input
+                type="text"
+                name="address"
+                id="address"
+                class="form-control"
+                required
+              />
+          </div>
+        </div>
 
           
   
      
 
-        <label for="country">住所</label>
-        <div class="form-group row">
-          <div class="col-sm-6">
-            <label for="country">Country</label>
-          <input
-              type="text"
-              name="country"
-              id="country"
-              class="form-control"
-              required
-            />
-          </div>
-
-          <div class="col-sm-6 ml-auto">
-            <label for="zip_code">Zip/Postal Code</label>
-            <input
-              type="text"
-              name="zip_code"
-              id="zip_code"
-              class="form-control"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-sm-6">
-            <label for="state_province">State/Province</label>
-            <input
-              type="text"
-              name="state_province"
-              id="state_province"
-              class="form-control"
-              required
-            />
-          </div>
-
-          <div class="col-sm-6 ml-auto">
-            <label for="city">City</label>
-            <input
-              type="text"
-              name="city"
-              id="city"
-              class="form-control"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="street">Street</label>
-          <input type="text" name="street" id="street" class="form-control" />
-        </div>
 
         <div class="form-group row">
           <div class="col-sm-6">
@@ -249,6 +186,11 @@
           <input type="text" name="note" id="note" class="form-control" />
         </div>
 
+        <div class="form-group">
+          <label for="state">ステータス</label>
+          <input type="text" name="state" id="state" class="form-control" />
+        </div>
+
         <input  id="myButton" type="submit" value="保存" class="btn-primary btn btn-block" />
       
       </form>
@@ -261,27 +203,7 @@
   document.getElementById('birthday').valueAsDate = new Date();
 
   document.getElementById('myButton').addEventListener('submit', function(event) {
-      event.preventDefault(); // Ngăn chặn chuyển hướng mặc định của form
-  
-      pprint("3421362156416541541235721543213751354566")
-      // Thu thập dữ liệu từ form
-     // var formData = new FormData(this);
-    //  pprint(formData)
-  
-      // Gửi yêu cầu AJAX đến một URL Django
-     // fetch('/add_customer_url/', {
-       //   method: 'POST',
-      //    body: formData,
-      //    headers: {
-      //        'X-Requested-With': 'XMLHttpRequest',
-    //      },
-     // })
-     // .then(response => response.json())
-    //  .then(data => {
-          // Xử lý kết quả từ Django (nếu cần)
-    //      console.log(data);
-    //  })
-    //  .catch(error => console.error('Error:', error));
+      event.preventDefault(); 
   });
   </script>
 {% endblock %}

@@ -9,123 +9,92 @@
         {{form.as_p}}
         <h1 class="text-center text-uppercase h2 my-5">契約申込書</h1>
 
+     
+        <div class="form-group row">
+          <div class="col-sm-6">
+              <label for="data_name">申込データ名</label>
+              <input
+                type="text"
+                name="data_name"
+                id="data_name"
+                class="form-control"
+                required
+              />
+          </div>
+
+          <div class="col-sm-6 ml-auto">
+            <label for="plan">プランコード</label>
+              <input
+                type="text"
+                name="plan"
+                id="plan"
+                class="form-control"
+                required
+              />
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <div class="col-sm-6">
+              <label for="option">オプションコード</label>
+              <input
+                type="text"
+                name="option"
+                id="option"
+                class="form-control"
+                required
+              />
+          </div>
+
+          <div class="col-sm-6 ml-auto">
+            <label for="campaign">キャンペーンコード</label>
+              <input
+                type="text"
+                name="campaign"
+                id="campaign"
+                class="form-control"
+                required
+              />
+          </div>
+        </div>
+
         <div class="form-group row">
           <div class="col-sm-4">
             <label for="register_date">申込日</label>
             <input type="date" class="" name="register_date" id="register_date" required/>
           </div>
         </div>
-        
+       
+
         <div class="form-group row">
           <div class="col-sm-6">
-            <label for="plan">申込プラン</label>
-            <select 
-            class="form-select" 
-            aria-label="Default select example" 
-            name="plan"
-            id="plan"
-            class="form-control"
-            required>
-              <option selected>Select plan</option>
-              <option value="プランA">プランA</option>
-              <option value="プランB">プランB</option>
-            </select>
+              <label for="name">氏名</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                required
+              />
           </div>
 
           <div class="col-sm-6 ml-auto">
-            <label for="campaign">申込キャンペーン</label>
-            <select 
-            class="form-select" 
-            aria-label="Default select example" 
-            name="campaign"
-            id="campaign"
-            class="form-control"
-            required>
-              <option selected>Select Campaign</option>
-              <option value="キャンペーン1">キャンペーン1</option>
-              <option value="キャンペーン2">キャンペーン2</option>
-            </select>
+            <label for="name_kata">氏名カナ</label>
+              <input
+                type="text"
+                name="name_kata"
+                id="name_kata"
+                class="form-control"
+                required
+              />
           </div>
         </div>
+
+      
 
         <div class="form-group row">
           <div class="col-sm-6">
-            <label for="option">申込オプション</label>
-            {% comment %} <input type="text" name="option" id="option" class="form-control" /> {% endcomment %}
-            <select 
-            class="form-select" 
-            aria-label="Default select example" 
-            name="option"
-            id="option"
-            class="form-control"
-            required>
-              <option selected>Select option</option>
-              <option value="オプションA">オプションA</option>
-              <option value="オプションB">オプションB</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-sm-6">
-            <label for="name">氏名</label>
-          </div>
-
-          <div class="col-sm-6 ml-auto">
-            <label for="first_name_kata">氏名-カナ</label>
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-sm-6">
-            <label for="first_name">First Name</label>
-            <input
-              type="text"
-              name="first_name"
-              id="first_name"
-              class="form-control"
-              required
-            />
-          </div>
-
-          <div class="col-sm-6 ml-auto">
-            <label for="first_name_kata">First Name</label>
-            <input
-              type="text"
-              name="first_name_kata"
-              id="first_name_kata"
-              class="form-control"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-sm-6">
-            <label for="last_name">Last Name</label>
-            <input
-              type="text"
-              name="last_name"
-              id="last_name"
-              class="form-control"
-              required
-            />
-          </div>
-
-          <div class="col-sm-6 ml-auto">
-            <label for="last_name_kata">Last Name</label>
-            <input
-              type="text"
-              name="last_name_kata"
-              id="last_name_kata"
-              class="form-control"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-sm-4">
             <label for="gender">性別</label><br />
             <div class="form-check form-check-inline">
               <input
@@ -153,7 +122,7 @@
             </div>
           </div>
 
-          <div class="col-sm-8">
+          <div class="col-sm-6">
             <div class="form-group">
               <label for="birthday" class="nowrap mt-2 mr-1">生年月日</label>
               <input type="date" class=" " name="birthday" id="birthday" required/>
@@ -161,63 +130,28 @@
           </div>
         </div>
 
-
-          
-  
-     
-
-        <label for="country">住所</label>
         <div class="form-group row">
           <div class="col-sm-6">
-            <label for="country">Country</label>
-          <input
-              type="text"
-              name="country"
-              id="country"
-              class="form-control"
-              required
-            />
+              <label for="postal_code">郵便番号</label>
+              <input
+                type="text"
+                name="postal_code"
+                id="postal_code"
+                class="form-control"
+                required
+              />
           </div>
 
           <div class="col-sm-6 ml-auto">
-            <label for="zip_code">Zip/Postal Code</label>
-            <input
-              type="text"
-              name="zip_code"
-              id="zip_code"
-              class="form-control"
-              required
-            />
+            <label for="address">住所</label>
+              <input
+                type="text"
+                name="address"
+                id="address"
+                class="form-control"
+                required
+              />
           </div>
-        </div>
-
-        <div class="form-group row">
-          <div class="col-sm-6">
-            <label for="state_province">State/Province</label>
-            <input
-              type="text"
-              name="state_province"
-              id="state_province"
-              class="form-control"
-              required
-            />
-          </div>
-
-          <div class="col-sm-6 ml-auto">
-            <label for="city">City</label>
-            <input
-              type="text"
-              name="city"
-              id="city"
-              class="form-control"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="street">Street</label>
-          <input type="text" name="street" id="street" class="form-control" />
         </div>
 
         <div class="form-group row">
@@ -246,6 +180,11 @@
           <input type="text" name="note" id="note" class="form-control" />
         </div>
 
+        <div class="form-group">
+          <label for="state">ステータス</label>
+          <input type="text" name="state" id="state" class="form-control" />
+        </div>
+
         <input  id="myButton" type="submit" value="保存" class="btn-primary btn btn-block" />
       
       </form>
@@ -257,57 +196,75 @@
   document.addEventListener('DOMContentLoaded', function() {
     var customer2 = {{ customer | safe }};
 
-    var registerDateField = document.getElementById('register_date');
-    registerDateField.value = customer2.register_date; 
+    if (customer2.dataName != "") {
+      var registerDateField = document.getElementById('data_name');
+      registerDateField.value = customer2.dataName; 
+    }
+    if (customer2.plan != "") {
+      var planField = document.getElementById('plan');
+      planField.value = customer2.plan; 
+    }
+    if (customer2.campaign != "") {
+      var campaignField = document.getElementById('campaign');
+      campaignField.value = customer2.campaign; 
+    }
 
-    var planField = document.getElementById('plan');
-    console.log(customer2.plan)
-    planField.value = customer2.plan; 
+    if (customer2.option != "") {
+      var optionField = document.getElementById('option');
+      optionField.value = customer2.option; 
+    }
 
-    var campaignField = document.getElementById('campaign');
-    campaignField.value = customer2.campaign; 
+    if (customer2.appDate != "") {
+      var appDateField = document.getElementById('register_date');
+      appDateField.value = customer2.appDate;
+    }
 
-    var optionField = document.getElementById('option');
-    optionField.value = customer2.option; 
+    if (customer2.name != "") {
+      var nameField = document.getElementById('name');
+      nameField.value = customer2.name;
+    }
 
-    var firstNameField = document.getElementById('first_name');
-    firstNameField.value = customer2.first_name;
+    if (customer2.nameKata != "") {
+      var nameKataField = document.getElementById('name_kata');
+      nameKataField.value = customer2.nameKata;
+    }
+    
+    if (customer2.birthday != "") {
+      var birthdayField = document.getElementById('birthday');
+      birthdayField.value = customer2.birthday; 
+    }
 
-    var lastNameField = document.getElementById('last_name');
-    lastNameField.value = customer2.last_name;
+    if (customer2.post != "") {
+      var postField = document.getElementById('postal_code'); 
+      postField.value = customer2.post; 
+    }
 
-    var firstNameKataField = document.getElementById('first_name_kata');
-    firstNameKataField.value = customer2.first_name_kata;
+    if (customer2.address != "") {
+      var addressField = document.getElementById('address'); 
+      addressField.value = customer2.address; 
+    }
 
-    var lastNameKataField = document.getElementById('last_name_kata');
-    lastNameKataField.value = customer2.last_name_kata;
+    if (customer2.phoneNumber != "") {
+      var phoneNumberField = document.getElementById('phone_number'); 
+      phoneNumberField.value = customer2.phoneNumber; 
+    }
 
-    var birthdayField = document.getElementById('birthday'); 
-    birthdayField.value = customer2.birthday; 
+    if (customer2.mailAddress != "") {
+      var emailField = document.getElementById('email'); 
+      emailField.value = customer2.mailAddress; 
+    }
 
-    var countryField = document.getElementById('country'); 
-    countryField.value = customer2.country; 
+    if (customer2.remarks != "") {
+      var remarksField = document.getElementById('note'); 
+      remarksField.value = customer2.remarks; 
+    }
 
-    var zipCodeField = document.getElementById('zip_code'); 
-    zipCodeField.value = customer2.zip_code; 
+    if (customer2.status != "") {
+      var statusField = document.getElementById('state'); 
+      statusField.value = customer2.status; 
+    }
 
-    var stateProvinceField = document.getElementById('state_province'); 
-    stateProvinceField.value = customer2.state_province; 
-
-    var cityField = document.getElementById('city'); 
-    cityField.value = customer2.city; 
-
-    var streetField = document.getElementById('street'); 
-    streetField.value = customer2.street; 
-
-    var phoneNumberField = document.getElementById('phone_number'); 
-    phoneNumberField.value = customer2.phone_number; 
-
-    var emailField = document.getElementById('email'); 
-    emailField.value = customer2.email; 
-
-    var noteField = document.getElementById('note'); 
-    noteField.value = customer2.note; 
+   
 });
 
 

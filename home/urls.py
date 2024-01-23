@@ -15,11 +15,11 @@ urlpatterns = [
     
     
     path('customer/',views.addCustomer,name='addCustomer'),
-    path('delete_customer/<int:pk>', views.deleteCustomer, name='delete_customer'),
+    path('delete_customer/<str:pk>', views.deleteCustomer, name='delete_customer'),
     
-    path('show_customer/<int:pk>', views.showCustomer, name='show_customer'),
+    path('show_customer/<str:pk>', views.showCustomer, name='show_customer'),
     
-    path('update_customer/<int:pk>', views.updateCustomer, name='update_customer'),
+    path('update_customer/<str:pk>', views.updateCustomer, name='update_customer'),
     
     
     
