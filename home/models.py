@@ -14,7 +14,7 @@ class CustomerSF_full:
     nameKata ,
     sex ,
     birthday ,
-    post ,
+    # post ,
     address ,
     phoneNumber ,
     mailAddress ,
@@ -31,7 +31,7 @@ class CustomerSF_full:
         self.nameKata = nameKata
         self.sex = sex
         self.birthday = birthday
-        self.post = post
+        # self.post = post
         self.address = address
         self.phoneNumber = phoneNumber
         self.mailAddress = mailAddress
@@ -52,7 +52,7 @@ class CustomerSF_full:
             
             "sex": self.sex,
             "birthday": self.birthday,
-            "post": self.post,
+            # "post": self.post,
             "address": self.address,
             "phoneNumber": self.phoneNumber,
             "mailAddress": self.mailAddress,
@@ -73,7 +73,7 @@ class CustomerSF_full:
             nameKata = json['name_kana__c']if  json['name_kana__c'] != None else "",
             sex = json['sex__c']if  json['sex__c'] != None else "",
             birthday =  datetime.strptime(json['birthday__c'], "%Y-%m-%d").date() if  json['birthday__c'] != None else "",
-            post = json['post_code__c']if  json['post_code__c'] != None else "",
+            # post = json['address__postalcode__s']if  json['address__postalcode__s'] != None else "",
             address = json['address__c']if  json['address__c'] != None else "",
             phoneNumber = json['phone_number__c']if  json['phone_number__c'] != None else "",
             mailAddress = json['mail_address__c']if  json['mail_address__c'] != None else "",

@@ -226,10 +226,10 @@
       birthdayField.value = customer2.birthday; 
     }
 
-    if (customer2.post != "") {
+    {% comment %} if (customer2.post != "") {
       var postField = document.getElementById('postal_code'); 
       postField.value = customer2.post; 
-    }
+    } {% endcomment %}
 
     if (customer2.address != "") {
       var addressField = document.getElementById('address'); 

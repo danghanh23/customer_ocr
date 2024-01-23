@@ -1,9 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 import json
-from home.api.customer_SF_api import getListCustomerSF, get1CustomerSF, editCustomerSF
-from home.api.customer_kintone_api import getListCustomer, listModelKintone, find_by_id, editCustomer, deleteCustomerApi, createCustomerApi
-
+from home.api.customer_SF_api import getListCustomerSF, get1CustomerSF, editCustomerSF,deleteCustomerSFApi, createCustomerSFApi
 from .forms import CustomerForm, RegistrationForm
 from django.contrib.auth import logout, login
 import requests
@@ -44,7 +42,7 @@ def gotoRegister(request):
 def addCustomer(request):
     if request.method == 'POST':
         try:
-            createCustomerApi(request)
+            createCustomerSFApi(request)
             return HttpResponseRedirect('/')
         except Exception as e:
             print(e)
@@ -53,8 +51,7 @@ def addCustomer(request):
 
 def deleteCustomer(request, pk):
     try:
-        obj = find_by_id(pk)
-        deleteCustomerApi(pk)
+        deleteCustomerSFApi(request, pk)
         return HttpResponseRedirect('/')
     except Exception as e:
         print(e)
