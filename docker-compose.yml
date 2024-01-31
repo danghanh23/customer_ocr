@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: always
+
+  web:
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    links:
+      - db:mysql
+
+  mysql-client:
+    image: mysql:latest
+    command: ["sh", "-c", "exec tail -f /dev/null"]
+    depends_on:
+      - db
+    links:
+      - db:mysql
+volumes:
+  mysql_data:  # Define the volume here
